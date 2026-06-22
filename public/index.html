@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>VideoHub Downloader Premium</title>
+<meta name="description" content="Download video TikTok & YouTube tanpa watermark, kualitas hingga 4K. Coba VIP 3 hari gratis." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<meta name="google-site-verification" content="W46vDQkTlzHwg1ttoH47L4Eh5qafyxmpFuGlWOSeB5E" />
+</head>
+<body>
+
+<div class="bg-aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+<div class="noise" aria-hidden="true"></div>
+
+<!-- TOASTS -->
+<div class="toast-stack" id="toast-stack"></div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="container nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">VH</span>
+      <span class="brand-text">VideoHub<b>Downloader</b></span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#downloader">Downloader</a>
+      <a href="#vip">VIP</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="btn btn-ghost" id="open-login" data-auth-out>Masuk</button>
+      <button class="btn btn-grad" id="open-register" data-auth-out>Daftar</button>
+
+      <div class="user-pill" id="user-pill" data-auth-in hidden>
+        <span class="user-avatar" id="user-avatar">U</span>
+        <span class="user-meta">
+          <span class="user-name" id="user-name-pill">User</span>
+          <span class="user-plan-chip" id="user-plan-pill">Free</span>
+        </span>
+        <button class="user-caret" id="open-dashboard" title="Dashboard">▾</button>
+      </div>
+    </div>
+
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#downloader">Downloader</a>
+    <a href="#vip">VIP Membership</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <div class="mobile-auth" data-auth-out>
+      <button class="btn btn-ghost" id="open-login-m">Masuk</button>
+      <button class="btn btn-grad" id="open-register-m">Daftar</button>
+    </div>
+    <button class="btn btn-soft" id="open-dashboard-m" data-auth-in hidden>Dashboard Saya</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="container hero-inner">
+
+    <div class="hero-badge">
+      <span class="pulse-dot"></span>
+      VideoHub Downloader Premium · 2026
+    </div>
+
+    <h1 class="hero-title">
+      Download video <span class="grad-text">tanpa batas</span><br/>
+      kualitas hingga <span class="grad-text">4K</span>.
+    </h1>
+
+    <p class="hero-sub">
+      TikTok tanpa watermark &amp; YouTube multi-kualitas dalam satu dashboard premium.
+      Cepat, aman, dan dirancang seperti aplikasi kelas atas.
+    </p>
+
+    <div class="trial-banner" id="trial-banner">
+      <div class="trial-banner-text">
+        <strong>Coba VIP 3 Hari — Gratis</strong>
+        <span>Buka kualitas 2K/4K, tanpa iklan, dan unlimited download.</span>
+      </div>
+      <button class="btn btn-grad btn-sm" id="trial-cta">Aktifkan Trial</button>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOADER -->
+<section class="downloader" id="downloader">
+  <div class="container">
+    <div class="glass downloader-card">
+
+      <div class="tab-row" role="tablist">
+        <button class="tab-btn active" id="tab-tiktok" role="tab" aria-selected="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34l-.01-8.83a8.18 8.18 0 0 0 4.78 1.52V4.55a4.85 4.85 0 0 1-1-.86z"/></svg>
+          TikTok
+        </button>
+        <button class="tab-btn" id="tab-youtube" role="tab" aria-selected="false">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </button>
+
+        <div class="plan-indicator" id="plan-indicator">
+          <span class="plan-dot"></span>
+          <span id="plan-indicator-text">Free Plan · 20 download/hari</span>
+        </div>
+      </div>
+
+      <div class="input-row">
+        <div class="input-wrap">
+          <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07L11 4.93"/><path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07L13 19.07"/></svg>
+          <input type="url" id="url-input" class="url-input" placeholder="Tempel link TikTok di sini..." autocomplete="off" spellcheck="false" />
+          <button class="clear-btn" id="clear-btn" aria-label="Hapus">✕</button>
+        </div>
+        <button class="btn btn-grad grab-btn" id="grab-btn">
+          <span class="grab-label">Download</span>
+        </button>
+      </div>
+      <p class="input-hint" id="input-hint">Mendukung TikTok &amp; TikTok Lite · Tempel URL lalu tekan Download</p>
+
+      <!-- LOADING -->
+      <div class="state-card loading-card" id="loading">
+        <div class="spinner"></div>
+        <p>Memproses video, mohon tunggu…</p>
+      </div>
+
+      <!-- ERROR -->
+      <div class="state-card error-card" id="error-box" role="alert">
+        <span class="error-icon">!</span>
+        <div class="error-body">
+          <strong>Gagal memuat</strong>
+          <span id="error-msg">Terjadi kesalahan.</span>
+        </div>
+        <button class="error-dismiss" id="error-dismiss">✕</button>
+      </div>
+
+      <!-- RESULT -->
+      <div class="result-card" id="result-card">
+        <div class="result-header">
+          <span class="result-badge" id="result-badge">TikTok</span>
+          <span class="result-ready">✓ Siap diunduh</span>
+        </div>
+
+        <div class="result-body">
+          <div class="thumb-frame" id="thumb-frame">
+            <img id="result-thumbnail" alt="Thumbnail" loading="lazy" />
+            <span class="thumb-duration" id="result-duration"></span>
+          </div>
+
+          <div class="info-col">
+            <p class="result-author" id="result-author"></p>
+            <h3 class="result-title" id="result-title"></h3>
+            <div class="stats-row" id="result-stats"></div>
+
+            <p class="quality-label">Pilih kualitas</p>
+            <div class="dl-grid" id="dl-buttons"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="container">
+    <h2 class="section-title">Dirancang untuk kecepatan &amp; kenyamanan</h2>
+    <div class="features-grid">
+      <div class="glass feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Super Cepat</h3>
+        <p>Proses video dalam hitungan detik dengan server prioritas.</p>
+      </div>
+      <div class="glass feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Aman &amp; Privat</h3>
+        <p>Tidak ada penyimpanan video di server kami. URL divalidasi otomatis.</p>
+      </div>
+      <div class="glass feature-card">
+        <div class="feature-icon">🎬</div>
+        <h3>Multi Kualitas</h3>
+        <p>360p hingga 4K — Free dan VIP punya pilihan masing-masing.</p>
+      </div>
+      <div class="glass feature-card">
+        <div class="feature-icon">☁️</div>
+        <h3>Riwayat Cloud</h3>
+        <p>Pengguna VIP mendapat riwayat download yang tersinkron di cloud.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIP -->
+<section class="vip-section" id="vip">
+  <div class="container vip-inner">
+    <div class="vip-copy">
+      <span class="eyebrow">VIP Membership</span>
+      <h2>Bebas iklan. Bebas batas. Kualitas maksimal.</h2>
+      <ul class="vip-list">
+        <li>Kualitas 1440p (2K) &amp; 2160p (4K)</li>
+        <li>Download unlimited, tanpa antre</li>
+        <li>Batch download banyak video sekaligus</li>
+        <li>Riwayat &amp; statistik download di cloud</li>
+        <li>Server prioritas + tanpa iklan</li>
+        <li>Tema eksklusif &amp; dukungan prioritas</li>
+      </ul>
+      <button class="btn btn-grad" id="vip-cta">Mulai Trial 3 Hari Gratis</button>
+    </div>
+    <div class="glass vip-card">
+      <div class="vip-card-head">Status VIP Kamu</div>
+      <div class="vip-card-body" id="vip-status-card">
+        <p class="vip-plan-name" id="vip-plan-name">Free</p>
+        <p class="vip-plan-detail" id="vip-plan-detail">Belum pernah mencoba VIP</p>
+        <div class="progress-track"><div class="progress-fill" id="vip-progress"></div></div>
+        <p class="vip-plan-note" id="vip-plan-note">Aktifkan trial 3 hari untuk membuka semua fitur premium.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <h2 class="section-title">Pilih Paket VIP</h2>
+    <p class="section-sub">Mulai dengan trial 3 hari gratis, lanjutkan sesuai kebutuhanmu.</p>
+    <div class="pricing-grid">
+      <div class="glass price-card">
+        <h3>Trial</h3>
+        <p class="price">Gratis<span>/ 3 hari</span></p>
+        <ul><li>Semua fitur VIP</li><li>Sekali per akun</li><li>Otomatis kembali ke Free</li></ul>
+        <button class="btn btn-soft price-btn" data-plan="trial">Aktifkan Trial</button>
+      </div>
+      <div class="glass price-card highlighted">
+        <span class="price-tag">Populer</span>
+        <h3>Bulanan</h3>
+        <p class="price">Rp29.000<span>/ 30 hari</span></p>
+        <ul><li>Unlimited download</li><li>4K + batch download</li><li>Tanpa iklan</li></ul>
+        <button class="btn btn-grad price-btn" data-plan="monthly">Pilih Paket</button>
+      </div>
+      <div class="glass price-card">
+        <h3>3 Bulan</h3>
+        <p class="price">Rp75.000<span>/ 90 hari</span></p>
+        <ul><li>Semua fitur VIP</li><li>Hemat 14%</li><li>Prioritas server</li></ul>
+        <button class="btn btn-soft price-btn" data-plan="quarterly">Pilih Paket</button>
+      </div>
+      <div class="glass price-card">
+        <h3>Tahunan</h3>
+        <p class="price">Rp250.000<span>/ 365 hari</span></p>
+        <ul><li>Semua fitur VIP</li><li>Hemat 28%</li><li>Dukungan prioritas</li></ul>
+        <button class="btn btn-soft price-btn" data-plan="yearly">Pilih Paket</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <h2 class="section-title">FAQ</h2>
+    <div class="faq-list" id="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">Apakah trial VIP 3 hari benar-benar gratis? <span>+</span></button>
+        <div class="faq-a"><p>Ya. Trial aktif otomatis selama 3 hari penuh tanpa biaya, satu kali per akun/perangkat.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Apa yang terjadi setelah trial berakhir? <span>+</span></button>
+        <div class="faq-a"><p>Akun otomatis kembali ke paket Free dengan limit 20 download per hari dan kualitas maksimal 1080p.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Apakah video disimpan di server? <span>+</span></button>
+        <div class="faq-a"><p>Tidak. Kami hanya memproses tautan secara langsung (proxy) tanpa menyimpan salinan video.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Bagaimana cara upgrade ke VIP penuh? <span>+</span></button>
+        <div class="faq-a"><p>Pilih paket di bagian Pricing — Bulanan, 3 Bulan, atau Tahunan — lalu selesaikan pembayaran.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark">VH</span>
+      <span class="brand-text">VideoHub<b>Downloader</b></span>
+    </div>
+    <p class="footer-copy">© 2026 VideoHub Downloader. Hanya untuk penggunaan pribadi — hormati hak cipta kreator.</p>
+  </div>
+</footer>
+
+<!-- AUTH MODAL -->
+<div class="modal-overlay" id="auth-overlay">
+  <div class="glass modal-card">
+    <button class="modal-close" id="auth-close">✕</button>
+
+    <div class="modal-tabs">
+      <button class="modal-tab active" id="modal-tab-login">Masuk</button>
+      <button class="modal-tab" id="modal-tab-register">Daftar</button>
+    </div>
+
+    <form class="auth-form" id="login-form">
+      <label>Email
+        <input type="email" id="login-email" required placeholder="kamu@email.com" />
+      </label>
+      <label>Password
+        <input type="password" id="login-password" required placeholder="••••••••" />
+      </label>
+      <button class="btn btn-grad" type="submit">Masuk</button>
+      <p class="auth-switch">Belum punya akun? <a href="#" id="switch-to-register">Daftar di sini</a></p>
+    </form>
+
+    <form class="auth-form" id="register-form" hidden>
+      <label>Username
+        <input type="text" id="register-username" required placeholder="namakamu" />
+      </label>
+      <label>Email
+        <input type="email" id="register-email" required placeholder="kamu@email.com" />
+      </label>
+      <label>Password
+        <input type="password" id="register-password" required placeholder="Minimal 6 karakter" minlength="6" />
+      </label>
+      <button class="btn btn-grad" type="submit">Buat Akun</button>
+      <p class="auth-switch">Sudah punya akun? <a href="#" id="switch-to-login">Masuk di sini</a></p>
+    </form>
+  </div>
+</div>
+
+<!-- UPGRADE MODAL -->
+<div class="modal-overlay" id="upgrade-overlay">
+  <div class="glass modal-card upgrade-card">
+    <button class="modal-close" id="upgrade-close">✕</button>
+    <div class="upgrade-icon">⭐</div>
+    <h3>Upgrade ke VIP</h3>
+    <p>Upgrade ke VIP untuk membuka kualitas 2K dan 4K, download tanpa batas, serta pengalaman tanpa iklan.</p>
+    <div class="upgrade-actions">
+      <button class="btn btn-grad" id="upgrade-now">Upgrade VIP</button>
+      <button class="btn btn-ghost" id="upgrade-later">Nanti Saja</button>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD DRAWER -->
+<div class="modal-overlay" id="dashboard-overlay">
+  <div class="glass dashboard-card">
+    <button class="modal-close" id="dashboard-close">✕</button>
+    <div class="dashboard-head">
+      <span class="user-avatar lg" id="dash-avatar">U</span>
+      <div>
+        <h3 id="dash-name">User</h3>
+        <span class="user-plan-chip" id="dash-plan">Free</span>
+      </div>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="dash-stat">
+        <span class="dash-stat-label">Download hari ini</span>
+        <span class="dash-stat-value" id="dash-today">0 / 20</span>
+      </div>
+      <div class="dash-stat">
+        <span class="dash-stat-label">Total download</span>
+        <span class="dash-stat-value" id="dash-total">0</span>
+      </div>
+      <div class="dash-stat">
+        <span class="dash-stat-label">Masa aktif VIP</span>
+        <span class="dash-stat-value" id="dash-vip-expiry">—</span>
+      </div>
+    </div>
+
+    <p class="dash-section-label">Riwayat Download</p>
+    <div class="dash-history" id="dash-history">
+      <p class="dash-empty">Belum ada riwayat download.</p>
+    </div>
+
+    <button class="btn btn-ghost" id="logout-btn">Keluar</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
